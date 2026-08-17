@@ -294,7 +294,16 @@ function wrapSvgText(label, maxChars) {
   return lines.slice(0, 3).map((l, i) => `<tspan x="50" dy="${i === 0 ? 0 : 9}">${esc(l)}</tspan>`).join("");
 }
 function mockupBox(product, variant = "front", extraClass = "") {
-  return `<div class="mockup-box ${extraClass}">${mockupSVG(product.name, variant)}</div>`;
+  // If the product has a real image, show it
+  if (product.image) {
+    return `
+      <div class="mockup-box ${extraClass}">
+        <img src="\( {product.image}" alt=" \){esc(product.name)}" style="width:100%; height:100%; object-fit:cover; border-radius:inherit;" />
+      </div>`;
+  }
+
+  // Otherwise show the SVG placeholder
+  return `<div class="mockup-box \( {extraClass}"> \){mockupSVG(product.name, variant)}</div>`;
 }
 
 /* ----------------------------------------------------------------------------
@@ -562,11 +571,11 @@ function renderProductDetail(id) {
       <a href="#shop" class="btn-ghost" style="font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;">← Back to Shop</a>
       <div class="product-detail" style="margin-top:22px;">
         <div class="detail-gallery">
-          ${mockupBox(p, "front")}
-          ${mockupBox(p, "back")}
-          ${mockupBox(p, "lifestyle", "wide")}
-          ${mockupBox(p, "close-up", "wide")}
-        </div>
+  ${mockupBox(p, "front")}
+  ${mockupBox(p, "back")}
+  ${mockupBox(p, "lifestyle", "wide")}
+  ${mockupBox(p, "close-up", "wide")}
+</div>
         <div class="detail-info">
           <span class="badge-inline">${esc(p.status)}</span>
           <h1 style="margin-top:14px;">${esc(p.name)}</h1>
