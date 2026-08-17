@@ -571,10 +571,20 @@ function renderProductDetail(id) {
       <a href="#shop" class="btn-ghost" style="font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;">← Back to Shop</a>
       <div class="product-detail" style="margin-top:22px;">
         <div class="detail-gallery">
-  ${mockupBox(p, "front")}
-  ${mockupBox(p, "back")}
-  ${mockupBox(p, "lifestyle", "wide")}
-  ${mockupBox(p, "close-up", "wide")}
+  ${p.image 
+    ? `<div class="mockup-box"><img src="\( {p.image}" alt=" \){esc(p.name)}" style="width:100%; height:100%; object-fit:cover;" /></div>` 
+    : mockupBox(p, "front")}
+  
+  ${p.images && p.images.length > 0 
+    ? p.images.map(img => `
+        <div class="mockup-box">
+          <img src="\( {img}" alt=" \){esc(p.name)}" style="width:100%; height:100%; object-fit:cover;" />
+        </div>`).join("")
+    : `
+      ${mockupBox(p, "back")}
+      ${mockupBox(p, "lifestyle", "wide")}
+      ${mockupBox(p, "close-up", "wide")}
+    `}
 </div>
         <div class="detail-info">
           <span class="badge-inline">${esc(p.status)}</span>
