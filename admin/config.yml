@@ -28,6 +28,5 @@ collections:
       - { name: price, label: Price (leave empty for "Price on Request"), widget: number, required: false, value_type: float }
       - { name: colors, label: Colors, widget: list, field: { name: color, label: Color, widget: string }, default: ["Black", "Charcoal", "Sand", "White"] }
       - { name: sizes, label: Sizes, widget: list, field: { name: size, label: Size, widget: string }, default: ["S", "M", "L", "XL", "XXL"] }
-      - { name: description, label: Description, widget: text }
-      - { name: care, label: Care Instructions, widget: text, default: "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER" }
-      - { name: fulfillment, label: Estimated Fulfillment, widget: text, default: "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER" }
+      - { name: image, label: Main Product Image, widget: image, required: false }
+      - { name: images, label: Additional Images, widget: list, field: { name: image, label: Image, widget: image }, required: false }
