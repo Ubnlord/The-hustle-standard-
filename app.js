@@ -178,44 +178,36 @@ const PRODUCTS = [
     name: "MONEY LOVES DISCIPLINE.",
     collection: "THE DISCIPLINE DROP",
     category: "T-Shirt",
-    status: "NEW DROP",
-    price: null,
-    colors: DEFAULT_COLORS,
-    sizes: DEFAULT_SIZES,
-    description:
-      "Discipline isn't the opposite of freedom — it's the price of it. Built for people who get the relationship between the two.",
-    care: "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER",
-    fulfillment: "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
-  },
-  {
-    id: "focus-build-grow",
-    name: "FOCUS. BUILD. GROW.",
-    collection: "THE DISCIPLINE DROP",
-    category: "T-Shirt",
-    status: "NEW DROP",
-    price: null,
-    colors: DEFAULT_COLORS,
-    sizes: DEFAULT_SIZES,
-    description:
-      "Three words, one process. A simple framework for anyone building something that matters.",
-    care: "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER",
-    fulfillment: "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
-  },
-  {
-    id: "become-unstoppable",
-    name: "BECOME UNSTOPPABLE.",
-    collection: "THE DISCIPLINE DROP",
-    category: "T-Shirt",
-    status: "NEW DROP",
-    price: null,
-    colors: DEFAULT_COLORS,
-    sizes: DEFAULT_SIZES,
-    description:
-      "Not a mood. A decision. For the ones committed to becoming the hardest version of themselves to stop.",
-    care: "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER",
-    fulfillment: "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
-  },
+let PRODUCTS = [];
+
+const PRODUCT_FILES = [
+  "discipline-motivation.json",
+  "no-excuses.json",
+  "build-in-silence.json",
+  "work-earn-repeat.json",
+  "get-paid-stay-humble.json",
+  "consistency-wins.json",
+  "your-future-needs-you.json",
+  "money-loves-discipline.json",
+  "focus-build-grow.json",
+  "become-unstoppable.json"
 ];
+
+async function loadProducts() {
+  try {
+    const promises = PRODUCT_FILES.map(file => 
+      fetch(`data/products/${file}`).then(res => res.json())
+    );
+    PRODUCTS = await Promise.all(promises);
+    console.log("Products loaded:", PRODUCTS.length);
+  } catch (error) {
+    console.error("Failed to load products:", error);
+  }
+  route(); // re-render the page after products are loaded
+}
+
+// Start loading products
+loadProducts();
 
 /* ----------------------------------------------------------------------------
    3. FAQ CONTENT  (EDIT ME)
@@ -974,4 +966,3 @@ document.getElementById("wa-float-link")?.addEventListener("click", (e) => {
     alert("Store owner: add your WhatsApp number in app.js (CONFIG.whatsappNumber) to enable this button.");
   }
 });
-route();
