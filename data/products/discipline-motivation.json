@@ -19,7 +19,9 @@
     "XXL"
   ],
   "image": "/media/1000689359.png",
-  "images": [],
+  "images": [
+    "/media/1000689359.png"
+  ],
   "fulfillment": "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
   "description": "Motivation gets you started. Discipline keeps you moving. A clean statement piece created for people who understand that consistency matters more than temporary motivation.",
   "care": "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER"
