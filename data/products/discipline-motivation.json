@@ -3,7 +3,7 @@
   "name": "DISCIPLINE > MOTIVATION",
   "collection": "THE DISCIPLINE DROP",
   "category": "T-Shirt",
-  "status": "NEW DROP",
+  "status": "AVAILABLE",
   "price": 25,
   "colors": [
     "Black",
@@ -22,7 +22,7 @@
   "images": [
     "/media/1000689359.png"
   ],
-  "fulfillment": "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
   "description": "Motivation gets you started. Discipline keeps you moving. A clean statement piece created for people who understand that consistency matters more than temporary motivation.",
+  "fulfillment": "INSERT ESTIMATED PRODUCTION & FULFILLMENT TIME FROM YOUR POD PROVIDER",
   "care": "INSERT CARE INSTRUCTIONS FROM YOUR PRINT-ON-DEMAND PROVIDER"
 }
